@@ -1,0 +1,16 @@
+import socket
+
+def listen_for_requests():
+    # Setup UDP socket
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as udp_socket:
+        udp_socket.bind(('localhost', 10000))  # Example address and port
+        while True:
+            data, addr = udp_socket.recvfrom(1024)  # Buffer size
+            handle_request(data, addr)
+
+def handle_request(data, addr):
+    # Parse request and respond (e.g., create session, list sessions)
+    pass
+
+if __name__ == "__main__":
+    listen_for_requests()
